@@ -40,21 +40,23 @@
         class="vsm--mobile-item"
         :style="mobileItemStyle.item"
       >
-        <sidebar-menu-item
-          v-if="mobileItem"
-          :item="mobileItem"
-          :is-mobile-item="true"
-          :mobile-item-style="mobileItemStyle"
-          :is-collapsed="isCollapsed"
-          :show-child="showChild"
-          :rtl="rtl"
-          :disable-hover="disableHover"
-        >
-          <slot
-            slot="dropdown-icon"
-            name="dropdown-icon"
-          />
-        </sidebar-menu-item>
+        <transition name="fade-animation">
+          <sidebar-menu-item
+            v-if="mobileItem"
+            :item="mobileItem"
+            :is-mobile-item="true"
+            :mobile-item-style="mobileItemStyle"
+            :is-collapsed="isCollapsed"
+            :show-child="showChild"
+            :rtl="rtl"
+            :disable-hover="disableHover"
+          >
+            <slot
+              slot="dropdown-icon"
+              name="dropdown-icon"
+            />
+          </sidebar-menu-item>
+        </transition>
         <transition name="slide-animation">
           <div
             v-if="mobileItem"
